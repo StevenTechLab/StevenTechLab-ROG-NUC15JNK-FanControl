@@ -26,6 +26,13 @@ fans. The plugin keeps 0% passive operation and individual 17–30% steps, and
 queues writes in the background so Fan Control remains responsive. The firmware
 limitation cannot be removed by the plugin.
 
+## Version 1.0.1
+
+This maintenance update suppresses tiny automatic one-percent oscillations in
+the 17–30% quiet range. Exact manual steps such as 20%, 25%, and 30% remain
+available, while needless BIOS curve rewrites — which can briefly restart the
+fans — are avoided.
+
 This is experimental hardware control. Monitor temperatures and keep the BIOS
 thermal protections enabled. Use at your own risk.
 

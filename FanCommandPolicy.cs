@@ -36,6 +36,19 @@ internal sealed class FanCommandPolicy
             return Math.Max(target, applied ?? target);
         }
 
+        // The NUC firmware restarts its fan controller for every curve write.
+        // In the whole quiet band Fan Control can report fractional values
+        // around an adjacent step as temperature noise (for example 18.89%
+        // then 19.17%).  Do not turn those one-step automatic corrections into
+        // repeated BIOS rewrites.  Exact integer slider requests remain
+        // immediate, so deliberate 20/25/30% manual settings are unaffected.
+        if (applied is >= 17 and <= 30 && target is >= 17 and <= 30 &&
+            target != applied.Value && Math.Abs(target - applied.Value) == 1 &&
+            Math.Abs(requested - (float)Math.Round(requested)) > 0.05f)
+        {
+            return null;
+        }
+
         if (!applied.HasValue)
         {
             Clear();
