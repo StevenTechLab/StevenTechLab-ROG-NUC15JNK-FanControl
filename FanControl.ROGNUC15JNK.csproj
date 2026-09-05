@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <OutputType>Library</OutputType>
+    <AssemblyName>FanControl.ROGNUC15JNK</AssemblyName>
+    <RootNamespace>FanControl.ROGNUC15JNK</RootNamespace>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Copy this exact API DLL from the target Fan Control release before building. -->
+    <Reference Include="FanControl.Plugins" HintPath="lib\FanControl.Plugins.dll" Private="false" />
+    <Reference Include="NvAPIWrapper" HintPath="lib\NvAPIWrapper.dll" Private="false" />
+    <Reference Include="System.Management" />
+  </ItemGroup>
+  <Target Name="RequireFanControlPluginApi" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('lib\FanControl.Plugins.dll')"
+           Text="Copy FanControl.Plugins.dll from the target Fan Control installation/release into lib before building." />
+  </Target>
+  <Target Name="RequireNvApiWrapper" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('lib\NvAPIWrapper.dll')"
+           Text="Copy NvAPIWrapper.dll from the target Fan Control installation into lib before building." />
+  </Target>
+</Project>

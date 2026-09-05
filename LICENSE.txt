@@ -1,0 +1,12 @@
+ROG NUC 2025 FanControl Plugin
+
+Copyright (c) 2026 StevenTechLab
+
+Permission is granted to use, copy, modify, and redistribute the original
+plugin source code and compiled plugin binary, provided that this notice and
+the accompanying documentation remain included.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. The author is
+not liable for hardware damage, data loss, overheating, or other consequences
+resulting from use of the plugin. Fan Control and all third-party components
+remain under their own licenses and are not included in this permission.
